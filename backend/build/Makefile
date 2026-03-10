@@ -129,6 +129,30 @@ miner_backend/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/miner_backend.dir/build.make CMakeFiles/miner_backend.dir/build
 .PHONY : miner_backend/fast
 
+src/AIExtensions.o: src/AIExtensions.cpp.o
+.PHONY : src/AIExtensions.o
+
+# target to build an object file
+src/AIExtensions.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/miner_backend.dir/build.make CMakeFiles/miner_backend.dir/src/AIExtensions.cpp.o
+.PHONY : src/AIExtensions.cpp.o
+
+src/AIExtensions.i: src/AIExtensions.cpp.i
+.PHONY : src/AIExtensions.i
+
+# target to preprocess a source file
+src/AIExtensions.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/miner_backend.dir/build.make CMakeFiles/miner_backend.dir/src/AIExtensions.cpp.i
+.PHONY : src/AIExtensions.cpp.i
+
+src/AIExtensions.s: src/AIExtensions.cpp.s
+.PHONY : src/AIExtensions.s
+
+# target to generate assembly for a file
+src/AIExtensions.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/miner_backend.dir/build.make CMakeFiles/miner_backend.dir/src/AIExtensions.cpp.s
+.PHONY : src/AIExtensions.cpp.s
+
 src/Agent.o: src/Agent.cpp.o
 .PHONY : src/Agent.o
 
@@ -200,6 +224,30 @@ src/Downloader.s: src/Downloader.cpp.s
 src/Downloader.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/miner_backend.dir/build.make CMakeFiles/miner_backend.dir/src/Downloader.cpp.s
 .PHONY : src/Downloader.cpp.s
+
+src/NeuralEngine.o: src/NeuralEngine.cpp.o
+.PHONY : src/NeuralEngine.o
+
+# target to build an object file
+src/NeuralEngine.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/miner_backend.dir/build.make CMakeFiles/miner_backend.dir/src/NeuralEngine.cpp.o
+.PHONY : src/NeuralEngine.cpp.o
+
+src/NeuralEngine.i: src/NeuralEngine.cpp.i
+.PHONY : src/NeuralEngine.i
+
+# target to preprocess a source file
+src/NeuralEngine.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/miner_backend.dir/build.make CMakeFiles/miner_backend.dir/src/NeuralEngine.cpp.i
+.PHONY : src/NeuralEngine.cpp.i
+
+src/NeuralEngine.s: src/NeuralEngine.cpp.s
+.PHONY : src/NeuralEngine.s
+
+# target to generate assembly for a file
+src/NeuralEngine.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/miner_backend.dir/build.make CMakeFiles/miner_backend.dir/src/NeuralEngine.cpp.s
+.PHONY : src/NeuralEngine.cpp.s
 
 src/Orchestrator.o: src/Orchestrator.cpp.o
 .PHONY : src/Orchestrator.o
@@ -330,6 +378,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... miner_backend"
+	@echo "... src/AIExtensions.o"
+	@echo "... src/AIExtensions.i"
+	@echo "... src/AIExtensions.s"
 	@echo "... src/Agent.o"
 	@echo "... src/Agent.i"
 	@echo "... src/Agent.s"
@@ -339,6 +390,9 @@ help:
 	@echo "... src/Downloader.o"
 	@echo "... src/Downloader.i"
 	@echo "... src/Downloader.s"
+	@echo "... src/NeuralEngine.o"
+	@echo "... src/NeuralEngine.i"
+	@echo "... src/NeuralEngine.s"
 	@echo "... src/Orchestrator.o"
 	@echo "... src/Orchestrator.i"
 	@echo "... src/Orchestrator.s"

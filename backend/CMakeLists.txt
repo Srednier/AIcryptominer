@@ -14,4 +14,6 @@ add_executable(miner_backend
     src/ProcessRunner.cpp
     src/Analytics.cpp
     src/SmartGuard.cpp
+    src/NeuralEngine.cpp
+    src/AIExtensions.cpp
 )

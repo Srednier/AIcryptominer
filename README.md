@@ -1,40 +1,36 @@
-# AI Crypto Miner Pro (v1.2 - Smart Analytics & Safeguards)
+# AI Crypto Miner Pro v2.0 - THE NEURAL UPDATE
 
-A top-tier, AI-optimized cryptocurrency miner with granular hardware control and smart safeguards.
+A state-of-the-art cryptocurrency mining platform featuring a deep neural engine and predictive hardware management.
 
-## Key Features in v1.2
-- **Yield Analytics**: Compare AI-driven earnings against fixed-coin baselines in a dedicated Analytics view.
-- **Per-Device Control**: Enable or disable specific GPUs/CPUs directly from the GUI.
-- **Profitability Safeguard**: Automatically pauses mining if electricity costs exceed current yield.
-- **Webhook Notifications**: Integrated Discord/Telegram webhook support for coin switch and overheat alerts.
-- **Thermal Protection**: Smart monitoring to prevent hardware damage from overheating.
+## Neural v2.0 Features
+- **Deep Neural Engine**: LibTorch-based Reinforcement Learning for adaptive decision making.
+- **Sentiment-Aware Mining**: Integrated SentimentAnalyzer scrapes news/hype to predict price spikes.
+- **AI-Driven Efficiency**: EfficiencyTuner optimizes Hash-per-Watt in real-time.
+- **Predictive Maintenance**: Early anomaly detection for GPU fans and thermal paste degradation.
+- **AI Brain Visualization**: Real-time insight into neural priority weights and sentiment heatmaps.
 
 ## Project Structure
-- `gui/`: Advanced React dashboard with per-device toggles and multi-tab analytics.
-- `backend/`: C++ core with AnalyticsManager, SmartGuard, and per-device Orchestrator.
+- `gui/`: Neural dashboard with specialized AI Brain and Analytics views.
+- `backend/`: C++ core with NeuralEngine, SentimentAnalyzer, and EfficiencyTuner.
 
-## Building and Running
+## Build and Run
 
 ### 1. Build the GUI
 ```bash
-cd gui
-npm install
-npm run build
+cd gui && npm install && npm run build
 ```
 
 ### 2. Build the Backend
 ```bash
-cd backend
-mkdir build && cd build
+cd backend && mkdir build && cd build
 cmake .. -DCMAKE_PREFIX_PATH="C:/path/to/libtorch"
 cmake --build . --config Release
 ```
 
 ### 3. Execution
 ```bash
-cd gui
-npm start
+cd gui && npm start
 ```
 
-## Development Status
-V1.2 finalized the architecture for production-grade mining management with smart automation and safety. Simulation mode provides high-fidelity telemetry for cross-platform testing.
+## Final Disclaimer
+Version 2.0 represents a significant leap in AI-assisted compute management. Simulation mode is provided for cross-platform validation. For production Windows use, ensure LibTorch and AMD ADL SDK are correctly linked.
