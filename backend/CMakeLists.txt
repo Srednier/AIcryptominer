@@ -16,4 +16,5 @@ add_executable(miner_backend
     src/SmartGuard.cpp
     src/NeuralEngine.cpp
     src/AIExtensions.cpp
+    src/ExperienceBuffer.cpp
 )

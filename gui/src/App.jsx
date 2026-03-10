@@ -3,7 +3,7 @@ import {
   LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, AreaChart, Area, Legend, PieChart, Pie, Cell, BarChart, Bar
 } from 'recharts';
 import {
-  LayoutDashboard, Wallet, Settings, Activity, Thermometer, Cpu, Zap, BrainCircuit, Play, Square, ShieldAlert, Terminal, BarChart3, HardDrive, Bell, Eye, TrendingUp, AlertTriangle
+  LayoutDashboard, Wallet, Settings, Activity, Thermometer, Cpu, Zap, BrainCircuit, Play, Square, ShieldAlert, Terminal, BarChart3, HardDrive, Bell, Eye, TrendingUp, AlertTriangle, GraduationCap
 } from 'lucide-react';
 import './App.css';
 
@@ -45,18 +45,18 @@ function App() {
       <aside className="sidebar">
         <div style={{ marginBottom: '2rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
           <BrainCircuit color="#38bdf8" size={32} />
-          <h2 style={{ fontSize: '1.25rem', margin: 0 }}>AI Miner Pro 2.0</h2>
+          <h2 style={{ fontSize: '1.25rem', margin: 0 }}>AI Miner Pro 2.1</h2>
         </div>
         <nav>
           <div className={`nav-item ${activeTab === 'dashboard' ? 'active' : ''}`} onClick={() => setActiveTab('dashboard')}><LayoutDashboard size={20} /> Dashboard</div>
-          <div className={`nav-item ${activeTab === 'aibrain' ? 'active' : ''}`} onClick={() => setActiveTab('aibrain')}><BrainCircuit size={20} /> AI Brain</div>
+          <div className={`nav-item ${activeTab === 'aibrain' ? 'active' : ''}`} onClick={() => setActiveTab('aibrain')}><BrainCircuit size={20} /> Neural Training</div>
           <div className={`nav-item ${activeTab === 'devices' ? 'active' : ''}`} onClick={() => setActiveTab('devices')}><HardDrive size={20} /> Devices</div>
           <div className={`nav-item ${activeTab === 'stats' ? 'active' : ''}`} onClick={() => setActiveTab('stats')}><BarChart3 size={20} /> Analytics</div>
           <div className={`nav-item ${activeTab === 'settings' ? 'active' : ''}`} onClick={() => setActiveTab('settings')}><Settings size={20} /> Settings</div>
         </nav>
         <div style={{ marginTop: 'auto' }}>
           <button className={`btn ${isMining ? 'btn-stop' : 'btn-start'}`} onClick={toggleMining} style={{ width: '100%' }}>
-            {isMining ? 'Stop Neural Engine' : 'Start Neural Engine'}
+            {isMining ? 'Stop Training' : 'Start Training Loop'}
           </button>
         </div>
       </aside>
@@ -67,11 +67,11 @@ function App() {
             <div className="grid-stats">
               <div className="card"><Activity color="#38bdf8" /><div className="stat-value">{minerStatus.hashrate}</div><div className="stat-label">Neural Hashrate</div></div>
               <div className="card"><Zap color="#facc15" /><div className="stat-value">$18.20</div><div className="stat-label">Daily Yield (AI Boosted)</div></div>
-              <div className="card"><TrendingUp color="#4ade80" /><div className="stat-value">94.2%</div><div className="stat-label">AI Confidence</div></div>
-              <div className="card"><Eye color="#a855f7" /><div className="stat-value">{minerStatus.coin}</div><div className="stat-label">Neural Target</div></div>
+              <div className="card"><GraduationCap color="#4ade80" /><div className="stat-value">Batch #42</div><div className="stat-label">Learning Epoch</div></div>
+              <div className="card"><TrendingUp color="#a855f7" /><div className="stat-value">{aiBrain ? aiBrain.epsilon : '0.300'}</div><div className="stat-label">Exploration Rate (ε)</div></div>
             </div>
             <div className="card" style={{ height: '350px' }}>
-              <h3>Yield Projection (The Neural Edge)</h3>
+              <h3>Yield Projection (The Training Edge)</h3>
               <ResponsiveContainer width="100%" height="90%">
                 <AreaChart data={analytics}>
                   <defs>
@@ -81,8 +81,8 @@ function App() {
                   <XAxis dataKey="date" stroke="#94a3b8" />
                   <YAxis stroke="#94a3b8" />
                   <Tooltip contentStyle={{ background: '#1e293b', border: 'none' }} />
-                  <Area type="monotone" dataKey="aiYield" stroke="#38bdf8" fill="url(#colorAi)" name="Neural Yield" />
-                  <Area type="monotone" dataKey="fixedYield" stroke="#94a3b8" fill="transparent" name="Legacy Yield" strokeDasharray="5 5" />
+                  <Area type="monotone" dataKey="aiYield" stroke="#38bdf8" fill="url(#colorAi)" name="Trained Yield" />
+                  <Area type="monotone" dataKey="fixedYield" stroke="#94a3b8" fill="transparent" name="Fixed Coin Yield" strokeDasharray="5 5" />
                 </AreaChart>
               </ResponsiveContainer>
             </div>
@@ -92,13 +92,25 @@ function App() {
         {activeTab === 'aibrain' && aiBrain && (
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.5rem' }}>
             <div className="card" style={{ height: '400px' }}>
-              <h3>Decision Priority Weights</h3>
+              <h3>Cumulative Reward (Learning Progress)</h3>
+              <ResponsiveContainer width="100%" height="90%">
+                <LineChart data={aiBrain.learningCurve}>
+                  <CartesianGrid strokeDasharray="3 3" stroke="#334155" />
+                  <XAxis dataKey="step" stroke="#94a3b8" label={{ value: 'Training Step', position: 'insideBottom', offset: -5, fill: '#94a3b8' }} />
+                  <YAxis stroke="#94a3b8" label={{ value: 'Net Reward', angle: -90, position: 'insideLeft', fill: '#94a3b8' }} />
+                  <Tooltip contentStyle={{ background: '#1e293b', border: 'none' }} />
+                  <Line type="monotone" dataKey="reward" stroke="#4ade80" dot={false} strokeWidth={2} />
+                </LineChart>
+              </ResponsiveContainer>
+            </div>
+            <div className="card" style={{ height: '400px' }}>
+              <h3>Neural Decision Weights</h3>
               <ResponsiveContainer width="100%" height="80%">
                 <PieChart>
                   <Pie data={[
-                    { name: 'Market', value: aiBrain.weights.market },
-                    { name: 'Sentiment', value: aiBrain.weights.sentiment },
-                    { name: 'Efficiency', value: aiBrain.weights.efficiency }
+                    { name: 'Market (Learned)', value: aiBrain.weights.market },
+                    { name: 'Sentiment (Learned)', value: aiBrain.weights.sentiment },
+                    { name: 'Efficiency (Learned)', value: aiBrain.weights.efficiency }
                   ]} innerRadius={60} outerRadius={80} paddingAngle={5} dataKey="value">
                     {COLORS.map((entry, index) => <Cell key={`cell-${index}`} fill={entry} />)}
                   </Pie>
@@ -107,59 +119,39 @@ function App() {
                 </PieChart>
               </ResponsiveContainer>
             </div>
-            <div className="card" style={{ height: '400px' }}>
-              <h3>Market Sentiment Heatmap</h3>
-              <ResponsiveContainer width="100%" height="80%">
-                <BarChart data={aiBrain.sentimentHeatmap}>
-                  <CartesianGrid strokeDasharray="3 3" stroke="#334155" />
-                  <XAxis dataKey="coin" stroke="#94a3b8" />
-                  <YAxis stroke="#94a3b8" />
-                  <Tooltip contentStyle={{ background: '#1e293b', border: 'none' }} />
-                  <Bar dataKey="score" fill="#a855f7" radius={[4, 4, 0, 0]} />
-                </BarChart>
-              </ResponsiveContainer>
-            </div>
             <div className="card">
-              <h3>Neural Predictions</h3>
+              <h3>Training Status</h3>
+              <div className="card" style={{ background: '#0f172a', margin: '0.5rem 0', display: 'flex', alignItems: 'center', gap: '1rem' }}>
+                <Activity color="#4ade80" />
+                <strong>{aiBrain.trainingStatus}</strong>
+              </div>
               {aiBrain.predictions.map((p, i) => (
                 <div key={i} className="card" style={{ background: '#0f172a', margin: '0.5rem 0', display: 'flex', justifyContent: 'space-between' }}>
-                  <span>{p.target}: <strong style={{ color: '#4ade80' }}>{p.status}</strong></span>
-                  <span className="stat-label">Confidence: {p.confidence}</span>
+                  <span>{p.target}: <strong style={{ color: '#38bdf8' }}>{p.status}</strong></span>
+                  <span className="stat-label">Conf: {p.confidence}</span>
                 </div>
               ))}
             </div>
             <div className="card">
-              <h3><AlertTriangle size={18} color="#facc15" /> Maintenance Alerts</h3>
-              <div style={{ color: '#94a3b8', fontSize: '0.875rem' }}>
-                AI predicts 98% health. No anomalies detected in thermal or fan patterns.
+              <h3>Training Logs</h3>
+              <div style={{ background: '#0f172a', padding: '1rem', borderRadius: '0.5rem', fontFamily: 'monospace', fontSize: '0.75rem', color: '#94a3b8', height: '150px', overflowY: 'auto' }}>
+                <div>[2026-01-14 14:00:01] Buffer size: 1024 / 50000</div>
+                <div>[2026-01-14 14:00:05] Sampling batch: size=32</div>
+                <div>[2026-01-14 14:00:10] Backprop complete. Loss=0.042</div>
+                <div>[2026-01-14 14:00:15] Epsilon decayed to {aiBrain.epsilon}</div>
               </div>
             </div>
-          </div>
-        )}
-
-        {activeTab === 'devices' && (
-          <div className="card">
-            <h2>Hardware Management</h2>
-            {minerStatus.devices.map(device => (
-              <div key={device.id} className="card" style={{ background: '#0f172a', display: 'flex', justifyContent: 'space-between' }}>
-                <div><strong>{device.name}</strong><div className="stat-label">{device.type} | {device.temp} | {device.power}</div></div>
-                <div className="stat-value">{device.hashrate}</div>
-              </div>
-            ))}
           </div>
         )}
 
         {activeTab === 'settings' && (
           <div className="card">
-            <h2>Global Neural Settings</h2>
-            <div style={{ marginBottom: '1.5rem' }}>
-              <label className="stat-label">AI Aggression Level</label>
-              <input type="range" style={{ width: '100%', accentColor: '#38bdf8' }} />
-            </div>
+            <h2>Neural Hyperparameters</h2>
             <div className="card" style={{ background: '#0f172a' }}>
-              <h3>Predictive Tuning</h3>
-              <p className="stat-label">Automatically apply efficiency tweaks suggested by AI (Undervolt/Clocks).</p>
-              <button className="btn btn-start">Enable AI Tuning</button>
+              <label className="stat-label">Learning Rate (α): 0.01</label>
+              <input type="range" style={{ width: '100%', accentColor: '#38bdf8' }} min="0.001" max="0.1" step="0.001" defaultValue="0.01" />
+              <label className="stat-label">Epsilon Decay Rate: 0.005</label>
+              <input type="range" style={{ width: '100%', accentColor: '#a855f7' }} min="0.001" max="0.05" step="0.001" defaultValue="0.005" />
             </div>
           </div>
         )}

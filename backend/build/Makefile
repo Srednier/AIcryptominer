@@ -225,6 +225,30 @@ src/Downloader.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/miner_backend.dir/build.make CMakeFiles/miner_backend.dir/src/Downloader.cpp.s
 .PHONY : src/Downloader.cpp.s
 
+src/ExperienceBuffer.o: src/ExperienceBuffer.cpp.o
+.PHONY : src/ExperienceBuffer.o
+
+# target to build an object file
+src/ExperienceBuffer.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/miner_backend.dir/build.make CMakeFiles/miner_backend.dir/src/ExperienceBuffer.cpp.o
+.PHONY : src/ExperienceBuffer.cpp.o
+
+src/ExperienceBuffer.i: src/ExperienceBuffer.cpp.i
+.PHONY : src/ExperienceBuffer.i
+
+# target to preprocess a source file
+src/ExperienceBuffer.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/miner_backend.dir/build.make CMakeFiles/miner_backend.dir/src/ExperienceBuffer.cpp.i
+.PHONY : src/ExperienceBuffer.cpp.i
+
+src/ExperienceBuffer.s: src/ExperienceBuffer.cpp.s
+.PHONY : src/ExperienceBuffer.s
+
+# target to generate assembly for a file
+src/ExperienceBuffer.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/miner_backend.dir/build.make CMakeFiles/miner_backend.dir/src/ExperienceBuffer.cpp.s
+.PHONY : src/ExperienceBuffer.cpp.s
+
 src/NeuralEngine.o: src/NeuralEngine.cpp.o
 .PHONY : src/NeuralEngine.o
 
@@ -390,6 +414,9 @@ help:
 	@echo "... src/Downloader.o"
 	@echo "... src/Downloader.i"
 	@echo "... src/Downloader.s"
+	@echo "... src/ExperienceBuffer.o"
+	@echo "... src/ExperienceBuffer.i"
+	@echo "... src/ExperienceBuffer.s"
 	@echo "... src/NeuralEngine.o"
 	@echo "... src/NeuralEngine.i"
 	@echo "... src/NeuralEngine.s"

@@ -29,36 +29,24 @@ app.whenReady().then(() => {
 
 ipcMain.handle('get-miner-status', async () => {
   return {
-    status: 'Running',
-    coin: 'Gem (AI PUMP)',
-    hashrate: (48.5 + Math.random() * 2).toFixed(1) + ' MH/s',
-    temp: '64°C',
-    load: '92%',
-    devices: [
-      { id: 'gpu_0', name: 'AMD Radeon RX 6800', type: 'GPU', enabled: true, hashrate: '35.1 MH/s', temp: '66°C', power: '155W' },
-      { id: 'cpu_0', name: 'Intel Xeon Processor', type: 'CPU', enabled: true, hashrate: '1.4 MH/s', temp: '52°C', power: '90W' }
-    ],
-    logs: ["[NEURAL] Decision: GEM_COIN_PUMP", "[SENTIMENT] Score: 0.89 High Hype detected"]
+    status: 'Running', coin: 'XMR', hashrate: '52.1 MH/s', temp: '64°C', load: '92%', devices: [], logs: ["[NEURAL] Exploration Mode enabled", "[NEURAL] Training batch complete"]
   };
 });
 
 ipcMain.handle('get-ai-brain', async () => {
+  const curve = [];
+  for (let i = 0; i < 20; i++) {
+    curve.push({ step: i, reward: 0.5 + Math.log(i + 1) * 0.2 + Math.random() * 0.1 });
+  }
+
   return {
     weights: { market: 0.3, sentiment: 0.5, efficiency: 0.2 },
-    sentimentHeatmap: [
-      { coin: 'ETH', score: 0.4 },
-      { coin: 'XMR', score: 0.2 },
-      { coin: 'RVN', score: 0.85 },
-      { coin: 'KAS', score: 0.92 }
-    ],
-    efficiencyCurve: [
-      { clock: 1800, hashPerWatt: 0.42 },
-      { clock: 2000, hashPerWatt: 0.45 },
-      { clock: 2200, hashPerWatt: 0.38 }
-    ],
+    epsilon: (0.3 - 0.005 * 10).toFixed(3),
+    learningCurve: curve,
+    trainingStatus: 'Optimizing Weights (Batch #42)',
     predictions: [
-      { target: 'Fan Health', status: 'Optimal', confidence: '98%' },
-      { target: 'Next Coin', status: 'RVN', confidence: '82%' }
+      { target: 'Model Loss', status: '0.042 (Stable)', confidence: '99%' },
+      { target: 'Learning Rate', status: '0.01', confidence: 'N/A' }
     ]
   };
 });

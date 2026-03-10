@@ -7,6 +7,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/miner_backend.dir/src/Analytics.cpp.o.d"
   "CMakeFiles/miner_backend.dir/src/Downloader.cpp.o"
   "CMakeFiles/miner_backend.dir/src/Downloader.cpp.o.d"
+  "CMakeFiles/miner_backend.dir/src/ExperienceBuffer.cpp.o"
+  "CMakeFiles/miner_backend.dir/src/ExperienceBuffer.cpp.o.d"
   "CMakeFiles/miner_backend.dir/src/NeuralEngine.cpp.o"
   "CMakeFiles/miner_backend.dir/src/NeuralEngine.cpp.o.d"
   "CMakeFiles/miner_backend.dir/src/Orchestrator.cpp.o"

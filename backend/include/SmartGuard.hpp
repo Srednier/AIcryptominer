@@ -20,3 +20,8 @@ private:
 };
 
 #endif
+
+class RewardCalculator {
+public:
+    double calculate(double grossProfit, double electricityCost, bool isHealthy);
+};

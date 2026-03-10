@@ -8,50 +8,62 @@
 #include "AIExtensions.hpp"
 #include "Analytics.hpp"
 #include "SmartGuard.hpp"
+#include "ExperienceBuffer.hpp"
 
-void globalNeuralLoop(Orchestrator& orch, NeuralEngine& neural, SentimentAnalyzer& sentiment, EfficiencyTuner& tuner, PredictiveMaintenance& maintenance, Scraper& scraper, AnalyticsManager& analytics) {
+void trainingLoop(Orchestrator& orch, NeuralEngine& neural, SentimentAnalyzer& sentiment, EfficiencyTuner& tuner, Scraper& scraper, AnalyticsManager& analytics, ExperienceBuffer& buffer) {
+    RewardCalculator rewardCalc;
+
     while (true) {
-        // 1. Gather all inputs
+        // 1. Current State
         auto marketData = scraper.getMarketData();
         double hype = sentiment.analyzeHype("ETH");
         double eff = tuner.calculateEfficiency(50.0, 150.0);
-
-        // 2. Predictive Checks
-        maintenance.predictFailure(65, 1200);
-
-        // 3. Global AI Decision
         std::vector<double> state;
         for (auto const& [c, p] : marketData) state.push_back(p);
 
+        // 2. Action (Inference with Exploration)
         std::string neuralTarget = neural.runInference(state, hype, eff);
+        int action = (neuralTarget == "GEM_COIN_PUMP" ? 0 : 1);
 
-        // 4. Act
+        // 3. Act
         orch.updateMiningStrategy(neuralTarget);
-        tuner.suggestTweaks(eff);
-        analytics.recordEarning(0.005, true);
+        std::this_thread::sleep_for(std::chrono::seconds(2)); // Wait for result
 
-        std::this_thread::sleep_for(std::chrono::seconds(15));
+        // 4. Observe Reward
+        double grossProfit = 0.5 + (rand() % 100) / 100.0; // Simulated result
+        double electricity = 0.4;
+        double reward = rewardCalc.calculate(grossProfit, electricity, true);
+
+        // 5. Store Experience
+        buffer.add({state, action, reward});
+
+        // 6. Train
+        neural.train(buffer);
+
+        analytics.recordEarning(grossProfit, true);
+
+        std::this_thread::sleep_for(std::chrono::seconds(5));
     }
 }
 
 int main() {
-    std::cout << "AI Crypto Miner Engine v2.0 - THE NEURAL UPDATE" << std::endl;
+    std::cout << "AI Crypto Miner Engine v2.1 - THE TRAINING UPDATE" << std::endl;
 
     Orchestrator orchestrator;
     NeuralEngine neural;
     SentimentAnalyzer sentiment;
     EfficiencyTuner tuner;
-    PredictiveMaintenance maintenance;
     Scraper scraper;
     AnalyticsManager analytics;
+    ExperienceBuffer buffer(50000);
 
-    std::thread neuralThread(globalNeuralLoop, std::ref(orchestrator), std::ref(neural), std::ref(sentiment), std::ref(tuner), std::ref(maintenance), std::ref(scraper), std::ref(analytics));
+    std::thread trainThread(trainingLoop, std::ref(orchestrator), std::ref(neural), std::ref(sentiment), std::ref(tuner), std::ref(scraper), std::ref(analytics), std::ref(buffer));
 
     while(true) {
         auto statuses = orchestrator.getAllStatus();
         for (const auto& s : statuses) {
             if (s.status == "Running") {
-                std::cout << "[NEURAL IPC] Active: " << s.totalHashrate << " MH/s" << std::endl;
+                std::cout << "[NEURAL TRAINING] Batch: " << buffer.size() << " | ε: " << neural.getEpsilon() << std::endl;
             }
         }
         std::this_thread::sleep_for(std::chrono::seconds(10));

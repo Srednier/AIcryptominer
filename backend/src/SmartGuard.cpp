@@ -23,3 +23,9 @@ bool SmartGuard::checkOverheat(int currentTemp, int maxTemp) {
     }
     return false;
 }
+
+double RewardCalculator::calculate(double grossProfit, double electricityCost, bool isHealthy) {
+    double net = grossProfit - electricityCost;
+    if (!isHealthy) net -= 10.0; // Penalty for unsafe operation
+    return net;
+}

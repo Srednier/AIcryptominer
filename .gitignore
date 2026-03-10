@@ -1,0 +1,13 @@
+node_modules/
+dist/
+build/
+*.o
+*.d
+*.exe
+*.zip
+*.log
+bin/
+test_orch
+test_proc
+test_neural
+test_analytics

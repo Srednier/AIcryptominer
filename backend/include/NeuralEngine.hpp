@@ -4,8 +4,8 @@
 #include <vector>
 #include <string>
 #include <map>
+#include "ExperienceBuffer.hpp"
 
-// Placeholder for full LibTorch integration
 struct AIWeights {
     double marketWeight;
     double sentimentWeight;
@@ -16,18 +16,19 @@ class NeuralEngine {
 public:
     NeuralEngine();
 
-    // Core decision logic
     std::string runInference(const std::vector<double>& marketData,
                             double sentimentScore,
                             double currentEfficiency);
 
-    void train(double reward);
+    void train(ExperienceBuffer& buffer);
 
     AIWeights getCurrentPriorities() const;
+    double getEpsilon() const { return m_epsilon; }
 
 private:
     AIWeights m_weights;
-    // torch::nn::Sequential m_model;
+    double m_epsilon; // Exploration rate
+    double m_learningRate;
 };
 
 #endif
