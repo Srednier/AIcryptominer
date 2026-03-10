@@ -153,6 +153,30 @@ src/Agent.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/miner_backend.dir/build.make CMakeFiles/miner_backend.dir/src/Agent.cpp.s
 .PHONY : src/Agent.cpp.s
 
+src/Analytics.o: src/Analytics.cpp.o
+.PHONY : src/Analytics.o
+
+# target to build an object file
+src/Analytics.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/miner_backend.dir/build.make CMakeFiles/miner_backend.dir/src/Analytics.cpp.o
+.PHONY : src/Analytics.cpp.o
+
+src/Analytics.i: src/Analytics.cpp.i
+.PHONY : src/Analytics.i
+
+# target to preprocess a source file
+src/Analytics.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/miner_backend.dir/build.make CMakeFiles/miner_backend.dir/src/Analytics.cpp.i
+.PHONY : src/Analytics.cpp.i
+
+src/Analytics.s: src/Analytics.cpp.s
+.PHONY : src/Analytics.s
+
+# target to generate assembly for a file
+src/Analytics.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/miner_backend.dir/build.make CMakeFiles/miner_backend.dir/src/Analytics.cpp.s
+.PHONY : src/Analytics.cpp.s
+
 src/Downloader.o: src/Downloader.cpp.o
 .PHONY : src/Downloader.o
 
@@ -249,6 +273,30 @@ src/Scraper.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/miner_backend.dir/build.make CMakeFiles/miner_backend.dir/src/Scraper.cpp.s
 .PHONY : src/Scraper.cpp.s
 
+src/SmartGuard.o: src/SmartGuard.cpp.o
+.PHONY : src/SmartGuard.o
+
+# target to build an object file
+src/SmartGuard.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/miner_backend.dir/build.make CMakeFiles/miner_backend.dir/src/SmartGuard.cpp.o
+.PHONY : src/SmartGuard.cpp.o
+
+src/SmartGuard.i: src/SmartGuard.cpp.i
+.PHONY : src/SmartGuard.i
+
+# target to preprocess a source file
+src/SmartGuard.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/miner_backend.dir/build.make CMakeFiles/miner_backend.dir/src/SmartGuard.cpp.i
+.PHONY : src/SmartGuard.cpp.i
+
+src/SmartGuard.s: src/SmartGuard.cpp.s
+.PHONY : src/SmartGuard.s
+
+# target to generate assembly for a file
+src/SmartGuard.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/miner_backend.dir/build.make CMakeFiles/miner_backend.dir/src/SmartGuard.cpp.s
+.PHONY : src/SmartGuard.cpp.s
+
 src/main.o: src/main.cpp.o
 .PHONY : src/main.o
 
@@ -285,6 +333,9 @@ help:
 	@echo "... src/Agent.o"
 	@echo "... src/Agent.i"
 	@echo "... src/Agent.s"
+	@echo "... src/Analytics.o"
+	@echo "... src/Analytics.i"
+	@echo "... src/Analytics.s"
 	@echo "... src/Downloader.o"
 	@echo "... src/Downloader.i"
 	@echo "... src/Downloader.s"
@@ -297,6 +348,9 @@ help:
 	@echo "... src/Scraper.o"
 	@echo "... src/Scraper.i"
 	@echo "... src/Scraper.s"
+	@echo "... src/SmartGuard.o"
+	@echo "... src/SmartGuard.i"
+	@echo "... src/SmartGuard.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"

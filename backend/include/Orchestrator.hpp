@@ -8,12 +8,21 @@
 #include <mutex>
 #include "ProcessRunner.hpp"
 
+struct DeviceStatus {
+    std::string id;
+    std::string name;
+    std::string type; // GPU or CPU
+    bool enabled;
+    double hashrate;
+    int temperature;
+    int powerUsage;
+};
+
 struct MinerStatus {
     std::string name;
     std::string status;
-    double hashrate;
-    int temperature;
-    double load;
+    double totalHashrate;
+    std::vector<DeviceStatus> devices;
     std::vector<std::string> lastLogs;
 };
 
@@ -24,6 +33,7 @@ public:
 
     void startMiner(const std::string& minerName, const std::string& coin);
     void stopMiner(const std::string& minerName);
+    void setDeviceEnabled(const std::string& deviceId, bool enabled);
     std::vector<MinerStatus> getAllStatus();
 
     void updateMiningStrategy(const std::string& coin);
@@ -37,7 +47,6 @@ private:
     std::mutex m_mutex;
     bool m_running;
 
-    // Configs
     const std::string m_placeholderWallet = "44AFFq5kSiGBo3SBYM76BXDHF... (Demo Only)";
     const std::string m_defaultPool = "moneroocean.stream:10128";
 };

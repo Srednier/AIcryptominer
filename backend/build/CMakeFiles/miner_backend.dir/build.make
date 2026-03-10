@@ -153,6 +153,34 @@ CMakeFiles/miner_backend.dir/src/ProcessRunner.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/miner_backend.dir/src/ProcessRunner.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /app/backend/src/ProcessRunner.cpp -o CMakeFiles/miner_backend.dir/src/ProcessRunner.cpp.s
 
+CMakeFiles/miner_backend.dir/src/Analytics.cpp.o: CMakeFiles/miner_backend.dir/flags.make
+CMakeFiles/miner_backend.dir/src/Analytics.cpp.o: /app/backend/src/Analytics.cpp
+CMakeFiles/miner_backend.dir/src/Analytics.cpp.o: CMakeFiles/miner_backend.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/app/backend/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/miner_backend.dir/src/Analytics.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/miner_backend.dir/src/Analytics.cpp.o -MF CMakeFiles/miner_backend.dir/src/Analytics.cpp.o.d -o CMakeFiles/miner_backend.dir/src/Analytics.cpp.o -c /app/backend/src/Analytics.cpp
+
+CMakeFiles/miner_backend.dir/src/Analytics.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/miner_backend.dir/src/Analytics.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /app/backend/src/Analytics.cpp > CMakeFiles/miner_backend.dir/src/Analytics.cpp.i
+
+CMakeFiles/miner_backend.dir/src/Analytics.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/miner_backend.dir/src/Analytics.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /app/backend/src/Analytics.cpp -o CMakeFiles/miner_backend.dir/src/Analytics.cpp.s
+
+CMakeFiles/miner_backend.dir/src/SmartGuard.cpp.o: CMakeFiles/miner_backend.dir/flags.make
+CMakeFiles/miner_backend.dir/src/SmartGuard.cpp.o: /app/backend/src/SmartGuard.cpp
+CMakeFiles/miner_backend.dir/src/SmartGuard.cpp.o: CMakeFiles/miner_backend.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/app/backend/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/miner_backend.dir/src/SmartGuard.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/miner_backend.dir/src/SmartGuard.cpp.o -MF CMakeFiles/miner_backend.dir/src/SmartGuard.cpp.o.d -o CMakeFiles/miner_backend.dir/src/SmartGuard.cpp.o -c /app/backend/src/SmartGuard.cpp
+
+CMakeFiles/miner_backend.dir/src/SmartGuard.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/miner_backend.dir/src/SmartGuard.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /app/backend/src/SmartGuard.cpp > CMakeFiles/miner_backend.dir/src/SmartGuard.cpp.i
+
+CMakeFiles/miner_backend.dir/src/SmartGuard.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/miner_backend.dir/src/SmartGuard.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /app/backend/src/SmartGuard.cpp -o CMakeFiles/miner_backend.dir/src/SmartGuard.cpp.s
+
 # Object files for target miner_backend
 miner_backend_OBJECTS = \
 "CMakeFiles/miner_backend.dir/src/main.cpp.o" \
@@ -160,7 +188,9 @@ miner_backend_OBJECTS = \
 "CMakeFiles/miner_backend.dir/src/Scraper.cpp.o" \
 "CMakeFiles/miner_backend.dir/src/Agent.cpp.o" \
 "CMakeFiles/miner_backend.dir/src/Downloader.cpp.o" \
-"CMakeFiles/miner_backend.dir/src/ProcessRunner.cpp.o"
+"CMakeFiles/miner_backend.dir/src/ProcessRunner.cpp.o" \
+"CMakeFiles/miner_backend.dir/src/Analytics.cpp.o" \
+"CMakeFiles/miner_backend.dir/src/SmartGuard.cpp.o"
 
 # External object files for target miner_backend
 miner_backend_EXTERNAL_OBJECTS =
@@ -171,9 +201,11 @@ miner_backend: CMakeFiles/miner_backend.dir/src/Scraper.cpp.o
 miner_backend: CMakeFiles/miner_backend.dir/src/Agent.cpp.o
 miner_backend: CMakeFiles/miner_backend.dir/src/Downloader.cpp.o
 miner_backend: CMakeFiles/miner_backend.dir/src/ProcessRunner.cpp.o
+miner_backend: CMakeFiles/miner_backend.dir/src/Analytics.cpp.o
+miner_backend: CMakeFiles/miner_backend.dir/src/SmartGuard.cpp.o
 miner_backend: CMakeFiles/miner_backend.dir/build.make
 miner_backend: CMakeFiles/miner_backend.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/app/backend/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking CXX executable miner_backend"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/app/backend/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Linking CXX executable miner_backend"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/miner_backend.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

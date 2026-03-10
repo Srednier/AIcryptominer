@@ -25,46 +25,37 @@ function createWindow() {
 
 app.whenReady().then(() => {
   createWindow();
-
-  app.on('activate', () => {
-    if (BrowserWindow.getAllWindows().length === 0) {
-      createWindow();
-    }
-  });
 });
 
-app.on('window-all-closed', () => {
-  if (process.platform !== 'darwin') {
-    app.quit();
-  }
-});
-
-// Simulated interaction with the C++ backend
-// In a real environment, this would use a child process to launch the C++ backend
-// and talk to it via JSON-RPC over stdout/stdin or a socket.
 ipcMain.handle('get-miner-status', async () => {
   return {
     status: 'Running',
     coin: 'Monero (XMR)',
-    pool: 'moneroocean.stream:10128',
     hashrate: (45.2 + Math.random() * 5).toFixed(1) + ' MH/s',
-    temp: (60 + Math.random() * 10).toFixed(0) + '°C',
-    load: (85 + Math.random() * 15).toFixed(0) + '%',
-    logs: [
-      "[2026-01-14 12:00:01] Connected to pool",
-      "[2026-01-14 12:00:05] New job from moneroocean.stream",
-      "[2026-01-14 12:00:10] Accepted share (32ms)",
-      "[2026-01-14 12:00:15] AI Optimized: switching difficulty..."
-    ]
+    temp: '62°C',
+    load: '88%',
+    devices: [
+      { id: 'gpu_0', name: 'AMD Radeon RX 6800', type: 'GPU', enabled: true, hashrate: '32.1 MH/s', temp: '64°C', power: '145W' },
+      { id: 'gpu_1', name: 'AMD Radeon RX 6700 XT', type: 'GPU', enabled: true, hashrate: '13.1 MH/s', temp: '58°C', power: '110W' },
+      { id: 'cpu_0', name: 'Intel Xeon Processor', type: 'CPU', enabled: true, hashrate: '1.2 MH/s', temp: '48°C', power: '85W' }
+    ],
+    logs: ["[LOG] AI Switch: XMR -> ETH", "[LOG] Share accepted by pool"]
   };
 });
 
-ipcMain.handle('start-mining', async () => {
-  console.log('Starting mining via backend...');
+ipcMain.handle('get-analytics', async () => {
+  const data = [];
+  for (let i = 0; i < 7; i++) {
+    const base = 10 + Math.random() * 5;
+    data.push({ date: `Jan ${14-i}`, aiYield: base + 2, fixedYield: base });
+  }
+  return data.reverse();
+});
+
+ipcMain.handle('set-device-enabled', async (event, { id, enabled }) => {
+  console.log(`Device ${id} set to ${enabled}`);
   return { success: true };
 });
 
-ipcMain.handle('stop-mining', async () => {
-  console.log('Stopping mining via backend...');
-  return { success: true };
-});
+ipcMain.handle('start-mining', async () => ({ success: true }));
+ipcMain.handle('stop-mining', async () => ({ success: true }));

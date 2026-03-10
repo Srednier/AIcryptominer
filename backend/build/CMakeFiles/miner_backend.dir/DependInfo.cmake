@@ -9,10 +9,12 @@ set(CMAKE_DEPENDS_LANGUAGES
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/app/backend/src/Agent.cpp" "CMakeFiles/miner_backend.dir/src/Agent.cpp.o" "gcc" "CMakeFiles/miner_backend.dir/src/Agent.cpp.o.d"
+  "/app/backend/src/Analytics.cpp" "CMakeFiles/miner_backend.dir/src/Analytics.cpp.o" "gcc" "CMakeFiles/miner_backend.dir/src/Analytics.cpp.o.d"
   "/app/backend/src/Downloader.cpp" "CMakeFiles/miner_backend.dir/src/Downloader.cpp.o" "gcc" "CMakeFiles/miner_backend.dir/src/Downloader.cpp.o.d"
   "/app/backend/src/Orchestrator.cpp" "CMakeFiles/miner_backend.dir/src/Orchestrator.cpp.o" "gcc" "CMakeFiles/miner_backend.dir/src/Orchestrator.cpp.o.d"
   "/app/backend/src/ProcessRunner.cpp" "CMakeFiles/miner_backend.dir/src/ProcessRunner.cpp.o" "gcc" "CMakeFiles/miner_backend.dir/src/ProcessRunner.cpp.o.d"
   "/app/backend/src/Scraper.cpp" "CMakeFiles/miner_backend.dir/src/Scraper.cpp.o" "gcc" "CMakeFiles/miner_backend.dir/src/Scraper.cpp.o.d"
+  "/app/backend/src/SmartGuard.cpp" "CMakeFiles/miner_backend.dir/src/SmartGuard.cpp.o" "gcc" "CMakeFiles/miner_backend.dir/src/SmartGuard.cpp.o.d"
   "/app/backend/src/main.cpp" "CMakeFiles/miner_backend.dir/src/main.cpp.o" "gcc" "CMakeFiles/miner_backend.dir/src/main.cpp.o.d"
   )
 

@@ -5,6 +5,16 @@
 #include <regex>
 
 Orchestrator::Orchestrator() : m_running(true) {
+    // Initialize with mock devices
+    MinerStatus xmrig = {"XMRig", "Ready", 0.0, {}, {}};
+    xmrig.devices.push_back({"cpu_0", "Intel Xeon Processor", "CPU", true, 0.0, 45, 80});
+    m_minerStatuses["XMRig"] = xmrig;
+
+    MinerStatus trm = {"TeamRedMiner", "Ready", 0.0, {}, {}};
+    trm.devices.push_back({"gpu_0", "AMD Radeon RX 6800", "GPU", true, 0.0, 55, 150});
+    trm.devices.push_back({"gpu_1", "AMD Radeon RX 6700 XT", "GPU", true, 0.0, 58, 120});
+    m_minerStatuses["TeamRedMiner"] = trm;
+
     std::thread([this]() {
         while (m_running) {
             this->monitorHardware();
@@ -23,19 +33,14 @@ Orchestrator::~Orchestrator() {
 
 void Orchestrator::startMiner(const std::string& minerName, const std::string& coin) {
     std::lock_guard<std::mutex> lock(m_mutex);
-
     if (m_runners.find(minerName) == m_runners.end()) {
         m_runners[minerName] = std::make_unique<ProcessRunner>();
     }
 
-    m_minerStatuses[minerName] = {minerName, "Starting", 0.0, 0, 0.0, {}};
+    m_minerStatuses[minerName].status = "Starting";
 
-    std::vector<std::string> args = {"-o", m_defaultPool, "-u", m_placeholderWallet, "-p", "AI_Miner"};
-    if (minerName == "XMRig") {
-        args.push_back("--coin");
-        args.push_back(coin);
-    }
-
+    std::vector<std::string> args = {"-o", m_defaultPool, "-u", m_placeholderWallet};
+    // In real app, we would add device indices based on enabled status
     m_runners[minerName]->launch(minerName + ".exe", args, [this, minerName](const std::string& line) {
         this->parseLogLine(minerName, line);
     });
@@ -46,56 +51,70 @@ void Orchestrator::stopMiner(const std::string& minerName) {
     if (m_runners.count(minerName)) {
         m_runners[minerName]->stop();
         m_minerStatuses[minerName].status = "Stopped";
-        m_minerStatuses[minerName].hashrate = 0.0;
+        m_minerStatuses[minerName].totalHashrate = 0.0;
+        for(auto& d : m_minerStatuses[minerName].devices) d.hashrate = 0.0;
+    }
+}
+
+void Orchestrator::setDeviceEnabled(const std::string& deviceId, bool enabled) {
+    std::lock_guard<std::mutex> lock(m_mutex);
+    for (auto& [name, status] : m_minerStatuses) {
+        for (auto& device : status.devices) {
+            if (device.id == deviceId) {
+                device.enabled = enabled;
+                std::cout << "[ORCH] Device " << device.name << " set to " << (enabled ? "ON" : "OFF") << std::endl;
+                // Restart miner logic would go here
+            }
+        }
     }
 }
 
 void Orchestrator::parseLogLine(const std::string& minerName, const std::string& line) {
     std::lock_guard<std::mutex> lock(m_mutex);
     auto& status = m_minerStatuses[minerName];
-
-    // Store last 10 log lines
     status.lastLogs.push_back(line);
-    if (status.lastLogs.size() > 10) {
-        status.lastLogs.erase(status.lastLogs.begin());
-    }
+    if (status.lastLogs.size() > 10) status.lastLogs.erase(status.lastLogs.begin());
 
-    // Simple regex to extract hashrate: "Hashrate: 45.2 MH/s"
     std::regex hr_regex("Hashrate: ([0-9.]+)");
     std::smatch matches;
-    if (std::regex_search(line, matches, hr_regex) && matches.size() > 1) {
-        status.hashrate = std::stod(matches[1].str());
+    if (std::regex_search(line, matches, hr_regex)) {
+        double hr = std::stod(matches[1].str());
+        status.totalHashrate = hr;
         status.status = "Running";
-    }
-
-    // Extract temperature: "Temp: 62C"
-    std::regex temp_regex("Temp: ([0-9]+)");
-    if (std::regex_search(line, matches, temp_regex) && matches.size() > 1) {
-        status.temperature = std::stoi(matches[1].str());
+        // Distribute to enabled devices for mock
+        int enabledCount = 0;
+        for (auto& d : status.devices) if (d.enabled) enabledCount++;
+        if (enabledCount > 0) {
+            for (auto& d : status.devices) {
+                if (d.enabled) d.hashrate = hr / enabledCount;
+                else d.hashrate = 0.0;
+            }
+        }
     }
 }
 
 std::vector<MinerStatus> Orchestrator::getAllStatus() {
     std::lock_guard<std::mutex> lock(m_mutex);
     std::vector<MinerStatus> statuses;
-    for (auto const& [name, status] : m_minerStatuses) {
-        statuses.push_back(status);
-    }
+    for (auto const& [name, status] : m_minerStatuses) statuses.push_back(status);
     return statuses;
 }
 
 void Orchestrator::updateMiningStrategy(const std::string& coin) {
-    std::cout << "[AI STRATEGY] Switching to: " << coin << std::endl;
-    // In a real app, this would trigger a stop-and-restart with new config
-    startMiner("XMRig", coin);
+    startMiner("TeamRedMiner", coin);
 }
 
 void Orchestrator::monitorHardware() {
-    // Only mock additional system load here, hashrate/temp comes from logs
     std::lock_guard<std::mutex> lock(m_mutex);
     for (auto& [name, status] : m_minerStatuses) {
-        if (status.status == "Running") {
-            status.load = 85.0 + (rand() % 15);
+        for (auto& d : status.devices) {
+            if (d.enabled && status.status == "Running") {
+                d.temperature = 55 + (rand() % 15);
+                d.powerUsage = 100 + (rand() % 100);
+            } else {
+                d.temperature = 35 + (rand() % 5);
+                d.powerUsage = 10;
+            }
         }
     }
 }

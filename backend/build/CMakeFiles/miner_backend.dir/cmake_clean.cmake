@@ -1,6 +1,8 @@
 file(REMOVE_RECURSE
   "CMakeFiles/miner_backend.dir/src/Agent.cpp.o"
   "CMakeFiles/miner_backend.dir/src/Agent.cpp.o.d"
+  "CMakeFiles/miner_backend.dir/src/Analytics.cpp.o"
+  "CMakeFiles/miner_backend.dir/src/Analytics.cpp.o.d"
   "CMakeFiles/miner_backend.dir/src/Downloader.cpp.o"
   "CMakeFiles/miner_backend.dir/src/Downloader.cpp.o.d"
   "CMakeFiles/miner_backend.dir/src/Orchestrator.cpp.o"
@@ -9,6 +11,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/miner_backend.dir/src/ProcessRunner.cpp.o.d"
   "CMakeFiles/miner_backend.dir/src/Scraper.cpp.o"
   "CMakeFiles/miner_backend.dir/src/Scraper.cpp.o.d"
+  "CMakeFiles/miner_backend.dir/src/SmartGuard.cpp.o"
+  "CMakeFiles/miner_backend.dir/src/SmartGuard.cpp.o.d"
   "CMakeFiles/miner_backend.dir/src/main.cpp.o"
   "CMakeFiles/miner_backend.dir/src/main.cpp.o.d"
   "miner_backend"

@@ -197,4 +197,5 @@ CMakeFiles/miner_backend.dir/src/main.cpp.o: /app/backend/src/main.cpp \
  /usr/include/c++/13/bits/stl_heap.h \
  /usr/include/c++/13/bits/uniform_int_dist.h /usr/include/c++/13/atomic \
  /app/backend/include/Scraper.hpp /app/backend/include/Agent.hpp \
- /app/backend/include/Downloader.hpp
+ /app/backend/include/Downloader.hpp /app/backend/include/Analytics.hpp \
+ /app/backend/include/SmartGuard.hpp

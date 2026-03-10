@@ -1,24 +1,17 @@
-# AI Crypto Miner with GUI (v1.1 - Active Mining)
+# AI Crypto Miner Pro (v1.2 - Smart Analytics & Safeguards)
 
-A modern, AI-optimized cryptocurrency miner featuring a React-based GUI and a high-performance C++ backend capable of orchestrating real mining processes.
+A top-tier, AI-optimized cryptocurrency miner with granular hardware control and smart safeguards.
 
-## New in v1.1
-- **Live Process Management**: Launches and monitors XMRig (CPU) and TeamRedMiner (AMD GPU).
-- **Automatic Binary Downloader**: Fetches the latest miner releases from GitHub.
-- **Real-time Log Parsing**: Extracts hashrate and temperature metrics directly from miner output using regex.
-- **Interactive GUI**: Added Start/Stop controls and a live log terminal view.
-- **Security Guide**: Integrated instructions for Antivirus/Windows Defender exclusions.
+## Key Features in v1.2
+- **Yield Analytics**: Compare AI-driven earnings against fixed-coin baselines in a dedicated Analytics view.
+- **Per-Device Control**: Enable or disable specific GPUs/CPUs directly from the GUI.
+- **Profitability Safeguard**: Automatically pauses mining if electricity costs exceed current yield.
+- **Webhook Notifications**: Integrated Discord/Telegram webhook support for coin switch and overheat alerts.
+- **Thermal Protection**: Smart monitoring to prevent hardware damage from overheating.
 
 ## Project Structure
-- `gui/`: Electron + React (Vite) frontend with IPC bridge.
-- `backend/`: C++ (CMake) engine including ProcessRunner, Downloader, and AI Agent.
-
-## Prerequisites for Windows Build
-1. **Node.js**: For building the GUI.
-2. **Visual Studio 2022**: With "Desktop development with C++" workload.
-3. **CMake**: Version 3.10 or higher.
-4. **LibTorch**: Download the C++ distribution of PyTorch and set `Torch_DIR`.
-5. **AMD ADL SDK**: Place headers in `backend/include` for hardware telemetry.
+- `gui/`: Advanced React dashboard with per-device toggles and multi-tab analytics.
+- `backend/`: C++ core with AnalyticsManager, SmartGuard, and per-device Orchestrator.
 
 ## Building and Running
 
@@ -38,12 +31,10 @@ cmake --build . --config Release
 ```
 
 ### 3. Execution
-Start the Electron application:
 ```bash
 cd gui
 npm start
 ```
-The GUI will automatically initialize the C++ engine and start the AI optimization loop.
 
-## Disclaimer
-This software is for educational and simulation purposes in this environment. Ensure you have the right to use the hardware and follow local regulations regarding cryptocurrency mining.
+## Development Status
+V1.2 finalized the architecture for production-grade mining management with smart automation and safety. Simulation mode provides high-fidelity telemetry for cross-platform testing.

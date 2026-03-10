@@ -102,3 +102,17 @@ body {
   background-color: #dc2626;
   transform: translateY(-1px);
 }
+.input-field {
+  width: 100%;
+  padding: 0.75rem;
+  background: #0f172a;
+  border: 1px solid #334155;
+  border-radius: 0.5rem;
+  color: white;
+  margin-top: 0.5rem;
+}
+
+.input-field:focus {
+  outline: none;
+  border-color: var(--accent-color);
+}

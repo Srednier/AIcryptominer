@@ -12,4 +12,6 @@ add_executable(miner_backend
     src/Agent.cpp
     src/Downloader.cpp
     src/ProcessRunner.cpp
+    src/Analytics.cpp
+    src/SmartGuard.cpp
 )
