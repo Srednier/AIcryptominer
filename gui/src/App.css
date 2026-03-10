@@ -74,3 +74,31 @@ body {
   background-color: var(--accent-color);
   color: white;
 }
+.btn {
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  transition: all 0.2s;
+}
+
+.btn-start {
+  background-color: var(--success-color);
+  color: #0f172a;
+}
+
+.btn-start:hover {
+  background-color: #22c55e;
+  transform: translateY(-1px);
+}
+
+.btn-stop {
+  background-color: #ef4444;
+  color: white;
+}
+
+.btn-stop:hover {
+  background-color: #dc2626;
+  transform: translateY(-1px);
+}

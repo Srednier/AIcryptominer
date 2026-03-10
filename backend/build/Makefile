@@ -153,6 +153,30 @@ src/Agent.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/miner_backend.dir/build.make CMakeFiles/miner_backend.dir/src/Agent.cpp.s
 .PHONY : src/Agent.cpp.s
 
+src/Downloader.o: src/Downloader.cpp.o
+.PHONY : src/Downloader.o
+
+# target to build an object file
+src/Downloader.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/miner_backend.dir/build.make CMakeFiles/miner_backend.dir/src/Downloader.cpp.o
+.PHONY : src/Downloader.cpp.o
+
+src/Downloader.i: src/Downloader.cpp.i
+.PHONY : src/Downloader.i
+
+# target to preprocess a source file
+src/Downloader.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/miner_backend.dir/build.make CMakeFiles/miner_backend.dir/src/Downloader.cpp.i
+.PHONY : src/Downloader.cpp.i
+
+src/Downloader.s: src/Downloader.cpp.s
+.PHONY : src/Downloader.s
+
+# target to generate assembly for a file
+src/Downloader.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/miner_backend.dir/build.make CMakeFiles/miner_backend.dir/src/Downloader.cpp.s
+.PHONY : src/Downloader.cpp.s
+
 src/Orchestrator.o: src/Orchestrator.cpp.o
 .PHONY : src/Orchestrator.o
 
@@ -176,6 +200,30 @@ src/Orchestrator.s: src/Orchestrator.cpp.s
 src/Orchestrator.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/miner_backend.dir/build.make CMakeFiles/miner_backend.dir/src/Orchestrator.cpp.s
 .PHONY : src/Orchestrator.cpp.s
+
+src/ProcessRunner.o: src/ProcessRunner.cpp.o
+.PHONY : src/ProcessRunner.o
+
+# target to build an object file
+src/ProcessRunner.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/miner_backend.dir/build.make CMakeFiles/miner_backend.dir/src/ProcessRunner.cpp.o
+.PHONY : src/ProcessRunner.cpp.o
+
+src/ProcessRunner.i: src/ProcessRunner.cpp.i
+.PHONY : src/ProcessRunner.i
+
+# target to preprocess a source file
+src/ProcessRunner.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/miner_backend.dir/build.make CMakeFiles/miner_backend.dir/src/ProcessRunner.cpp.i
+.PHONY : src/ProcessRunner.cpp.i
+
+src/ProcessRunner.s: src/ProcessRunner.cpp.s
+.PHONY : src/ProcessRunner.s
+
+# target to generate assembly for a file
+src/ProcessRunner.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/miner_backend.dir/build.make CMakeFiles/miner_backend.dir/src/ProcessRunner.cpp.s
+.PHONY : src/ProcessRunner.cpp.s
 
 src/Scraper.o: src/Scraper.cpp.o
 .PHONY : src/Scraper.o
@@ -237,9 +285,15 @@ help:
 	@echo "... src/Agent.o"
 	@echo "... src/Agent.i"
 	@echo "... src/Agent.s"
+	@echo "... src/Downloader.o"
+	@echo "... src/Downloader.i"
+	@echo "... src/Downloader.s"
 	@echo "... src/Orchestrator.o"
 	@echo "... src/Orchestrator.i"
 	@echo "... src/Orchestrator.s"
+	@echo "... src/ProcessRunner.o"
+	@echo "... src/ProcessRunner.i"
+	@echo "... src/ProcessRunner.s"
 	@echo "... src/Scraper.o"
 	@echo "... src/Scraper.i"
 	@echo "... src/Scraper.s"

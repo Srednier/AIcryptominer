@@ -10,4 +10,6 @@ add_executable(miner_backend
     src/Orchestrator.cpp
     src/Scraper.cpp
     src/Agent.cpp
+    src/Downloader.cpp
+    src/ProcessRunner.cpp
 )

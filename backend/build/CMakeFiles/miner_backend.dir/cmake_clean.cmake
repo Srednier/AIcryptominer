@@ -1,8 +1,12 @@
 file(REMOVE_RECURSE
   "CMakeFiles/miner_backend.dir/src/Agent.cpp.o"
   "CMakeFiles/miner_backend.dir/src/Agent.cpp.o.d"
+  "CMakeFiles/miner_backend.dir/src/Downloader.cpp.o"
+  "CMakeFiles/miner_backend.dir/src/Downloader.cpp.o.d"
   "CMakeFiles/miner_backend.dir/src/Orchestrator.cpp.o"
   "CMakeFiles/miner_backend.dir/src/Orchestrator.cpp.o.d"
+  "CMakeFiles/miner_backend.dir/src/ProcessRunner.cpp.o"
+  "CMakeFiles/miner_backend.dir/src/ProcessRunner.cpp.o.d"
   "CMakeFiles/miner_backend.dir/src/Scraper.cpp.o"
   "CMakeFiles/miner_backend.dir/src/Scraper.cpp.o.d"
   "CMakeFiles/miner_backend.dir/src/main.cpp.o"
