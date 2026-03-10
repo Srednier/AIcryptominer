@@ -1,0 +1,3 @@
+/app/backend/build/CMakeFiles/miner_backend.dir
+/app/backend/build/CMakeFiles/edit_cache.dir
+/app/backend/build/CMakeFiles/rebuild_cache.dir
