@@ -1,13 +1,20 @@
-node_modules/
-dist/
-build/
+# Build artifacts
+backend/build/
+backend/bin/
 *.o
 *.d
-*.exe
-*.zip
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
+
+# Dependencies
+gui/node_modules/
+backend/lib/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
 *.log
-bin/
-test_orch
-test_proc
-test_neural
-test_analytics

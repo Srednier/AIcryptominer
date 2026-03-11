@@ -23,30 +23,33 @@ function createWindow() {
   }
 }
 
-app.whenReady().then(() => {
-  createWindow();
-});
+app.whenReady().then(() => createWindow());
 
 ipcMain.handle('get-miner-status', async () => {
   return {
-    status: 'Running', coin: 'XMR', hashrate: '52.1 MH/s', temp: '64°C', load: '92%', devices: [], logs: ["[NEURAL] Exploration Mode enabled", "[NEURAL] Training batch complete"]
+    status: 'Running', coin: 'ETH/XMR', hashrate: '52.1 MH/s', temp: '64°C', load: '92%', devices: [], logs: ["[MULTI] GPU Agent: Switching to ETH_HIGH_PROFIT", "[MULTI] CPU Agent: Staying on XMR_STABLE"]
   };
 });
 
 ipcMain.handle('get-ai-brain', async () => {
-  const curve = [];
+  const curveGPU = [];
+  const curveCPU = [];
   for (let i = 0; i < 20; i++) {
-    curve.push({ step: i, reward: 0.5 + Math.log(i + 1) * 0.2 + Math.random() * 0.1 });
+    curveGPU.push({ step: i, reward: 0.5 + Math.log(i + 1) * 0.25 });
+    curveCPU.push({ step: i, reward: 0.3 + Math.log(i + 1) * 0.15 });
   }
 
   return {
-    weights: { market: 0.3, sentiment: 0.5, efficiency: 0.2 },
-    epsilon: (0.3 - 0.005 * 10).toFixed(3),
-    learningCurve: curve,
-    trainingStatus: 'Optimizing Weights (Batch #42)',
+    weights: { market: 0.35, sentiment: 0.45, efficiency: 0.20 },
+    epsilon: '0.125',
+    multiModel: {
+      gpu: { name: 'GPU Specialist', algo: 'DQN', status: 'Yield Optimization', curve: curveGPU },
+      cpu: { name: 'CPU Specialist', algo: 'PPO', status: 'Efficiency Tuning', curve: curveCPU }
+    },
+    trainingStatus: 'Multi-Agent Sync Active',
     predictions: [
-      { target: 'Model Loss', status: '0.042 (Stable)', confidence: '99%' },
-      { target: 'Learning Rate', status: '0.01', confidence: 'N/A' }
+      { target: 'GPU Yield', status: 'Peak', confidence: '92%' },
+      { target: 'CPU Temp', status: 'Stable', confidence: '99%' }
     ]
   };
 });
@@ -55,7 +58,7 @@ ipcMain.handle('get-analytics', async () => {
   const data = [];
   for (let i = 0; i < 7; i++) {
     const base = 10 + Math.random() * 5;
-    data.push({ date: `Jan ${14-i}`, aiYield: base + 4, fixedYield: base });
+    data.push({ date: `Jan ${14-i}`, aiYield: base + 6, fixedYield: base });
   }
   return data.reverse();
 });

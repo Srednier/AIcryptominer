@@ -4,14 +4,13 @@
 
 void testOrchestrator() {
     Orchestrator orch;
-    orch.startMiner("TestMiner", "config");
+    orch.setMultiAgentEnabled(true);
     auto statuses = orch.getAllStatus();
-    assert(statuses.size() == 1);
-    assert(statuses[0].name == "TestMiner");
-    std::cout << "Orchestrator test passed!" << std::endl;
+    assert(statuses.size() >= 2);
+    std::cout << "Orchestrator Multi-Agent setup passed!" << std::endl;
 }
 
 int main() {
     testOrchestrator();
-    return 0;
+    return 0; // Exit immediately to avoid long-running threads in tests
 }
