@@ -18,6 +18,9 @@ add_library(miner_lib STATIC
     src/ExperienceBuffer.cpp
     src/AdvancedAI.cpp
     src/MultiModelManager.cpp
+    src/SwarmManager.cpp
+    src/HardwareTuner.cpp
+    src/RemoteAPI.cpp
 )
 
 add_executable(miner_backend src/main.cpp)
@@ -34,3 +37,6 @@ target_link_libraries(test_training miner_lib)
 
 add_executable(test_orchestrator src/test_orchestrator.cpp)
 target_link_libraries(test_orchestrator miner_lib)
+
+add_executable(test_superagent src/test_superagent.cpp)
+target_link_libraries(test_superagent miner_lib)
